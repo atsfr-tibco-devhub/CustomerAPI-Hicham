@@ -1,0 +1,8 @@
+site_name: "CustomerAPI-Hicham"
+site_description: "A service that calls a backend customer service using Flogo - developped by Hicham"
+
+nav:
+  - Introduction: README.md
+
+plugins:
+  - techdocs-core

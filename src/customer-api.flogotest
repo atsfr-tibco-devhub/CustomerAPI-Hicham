@@ -1,0 +1,42 @@
+{
+  "suites": {
+    "Testsuite_1": {
+      "id": "Testsuite_1",
+      "name": "Testsuite_1",
+      "disabled": false,
+      "tests": [
+        "getCustomerById:test5"
+      ]
+    }
+  },
+  "tests": {
+    "getCustomerById:test1": {
+      "name": "test1",
+      "flowId": "flow:getCustomerById",
+      "flowName": "getCustomerById",
+      "description": "test  OK",
+      "flowInputs": {
+        "pathParams": {
+          "id": 2
+        }
+      }
+    },
+    "getCustomerById:test5": {
+      "name": "test5",
+      "flowId": "flow:getCustomerById",
+      "flowName": "getCustomerById",
+      "description": "testKO",
+      "flowInputs": {
+        "pathParams": {
+          "id": 2
+        }
+      }
+    }
+  },
+  "type": "flogo:unittest",
+  "model": "1.1.1",
+  "app": {
+    "name": "customer-api",
+    "version": "1.0.0"
+  }
+}

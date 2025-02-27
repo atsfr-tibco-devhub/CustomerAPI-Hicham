@@ -1,0 +1,79 @@
+{
+  "imports": [
+    "github.com/project-flogo/flow",
+    "github.com/project-flogo/contrib/activity/noop"
+  ],
+  "name": "CustomerAPI-Hicham",
+  "description": "A service that calls a backend customer service using Flogo - developped by Hicham",
+  "version": "1.0.0",
+  "type": "flogo:app",
+  "appModel": "1.1.1",
+  "tags": [],
+  "triggers": [],
+  "resources": [
+    {
+      "id": "flow:getCustomerById",
+      "data": {
+        "name": "getCustomerById",
+        "description": "Returns a customer object by Id",
+        "links": [],
+        "tasks": [
+          {
+            "id": "StartActivity",
+            "name": "StartActivity",
+            "description": "NoOp Activity",
+            "activity": {
+              "ref": "#noop"
+            }
+          }
+        ],
+        "fe_metadata": "eyJTdGFydEFjdGl2aXR5Ijp7IngiOjEyLCJ5IjoxMDF9fQ==",
+        "metadata": {
+          "input": [
+            {
+              "name": "pathParams",
+              "type": "object",
+              "schema": {
+                "type": "json",
+                "value": "{\"id\":{\"type\":\"number\"}}"
+              }
+            },
+            {
+              "name": "requestURI",
+              "type": "string"
+            },
+            {
+              "name": "method",
+              "type": "string"
+            }
+          ],
+          "output": [
+            {
+              "name": "code",
+              "type": "integer"
+            },
+            {
+              "name": "responseBody",
+              "type": "object",
+              "schema": {
+                "type": "json",
+                "value": "{\"body\":{\"type\":\"any\"},\"headers\":{\"type\":\"object\"}}"
+              }
+            }
+          ],
+          "fe_metadata": {
+            "input": "{\"type\":\"object\",\"title\":\"CustomerAPI\",\"properties\":{\"pathParams\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"number\"}},\"required\":[\"id\"]},\"requestURI\":{\"type\":\"string\",\"required\":false},\"method\":{\"type\":\"string\",\"required\":false}}}",
+            "output": "{\"type\":\"object\",\"title\":\"Inputs\",\"properties\":{\"code\":{\"type\":\"integer\",\"required\":false},\"responseBody\":{\"type\":\"object\",\"properties\":{\"body\":{\"type\":\"any\"},\"headers\":{\"type\":\"object\"}}}},\"required\":[]}"
+          }
+        }
+      }
+    }
+  ],
+  "properties": [],
+  "connections": {},
+  "contrib": "W10=",
+  "metadata": {
+    "endpoints": [],
+    "flogoVersion": "2.25.2"
+  }
+}
