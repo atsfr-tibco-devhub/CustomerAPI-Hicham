@@ -33,8 +33,8 @@ jobs:
           # Key:
           TOKEN=CIC~deSitXbHS1eI19RvAOoUlM_u
           # Flogo File to Deploy:
-          FLOGO_FILE=call-service.flogo
-          APP_NAME=call-service
+          FLOGO_FILE=src/customer-api.flogo
+          APP_NAME=customer-api
           # Testing the API
           echo Testing Connection:
           curl -X 'GET' \
