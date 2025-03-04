@@ -48,16 +48,16 @@ metadata:
     - title: Flogo Documentation
       url: https://docs.tibco.com/products/tibco-flogo-enterprise
     - title: VSCode Editor (File)
-      url: vscode://file//Users/dev/git/CustomerAPI-Hicham/src/customer-api.flogo
+      url: vscode://file//Users/hicham/git/CustomerAPI-Hicham/src/customer-api.flogo
     - title: VSCode Editor (Folder)
-      url: vscode://file//Users/dev/git/CustomerAPI-Hicham/src
+      url: vscode://file//Users/hicham/git/CustomerAPI-Hicham
   tibcoPlatformApps:
     - appType: Flogo
       appName: CustomerAPI-Hicham
       dataPlaneName: dp-aks
       dpId: cq35s2ijcp26pefl1dmg
       capabilityInstanceId: cqgcsnijcp26pefl1g20
-      appId: ct3opn31glmt0gsesehg
+      appId: cuvjtna7s9bmf6nsijvg
   annotations:
     jenkins.io/job-full-name: CustomerAPI-HichamJob
     github.com/project-slug: atsfr-tibco-devhub/CustomerAPI-Hicham
