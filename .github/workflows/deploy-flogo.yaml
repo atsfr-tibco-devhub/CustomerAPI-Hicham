@@ -36,7 +36,7 @@ jobs:
           TOKEN=CIC~deSitXbHS1eI19RvAOoUlM_u
           # Flogo File to Deploy:
           FLOGO_FILE=src/customer-api.flogo
-          APP_NAME=customer-api
+          APP_NAME=customer-api-hicham
           # Testing the API
           echo Testing Connection:
           curl -X 'GET' \
