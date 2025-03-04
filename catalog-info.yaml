@@ -63,7 +63,7 @@ metadata:
       appId: ct3opn31glmt0gsesehg
   annotations:
     jenkins.io/job-full-name: CustomerAPI-HichamJob
-    github.com/project-slug: atsfr-tibco-devhub/
+    github.com/project-slug: atsfr-tibco-devhub/CustomerAPI-Hicham
     backstage.io/techdocs-ref: dir:.
 spec:
   type: service
