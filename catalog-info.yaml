@@ -25,6 +25,18 @@ spec:
   owner: tibco-customers
 ---
 apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: customer-system
+  description: 'A system to manage customers'
+  tags:
+    - customers
+    - platform
+spec:
+  owner: tibco-customers
+  domain: customers
+---
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: "CustomerAPI-Hicham"
