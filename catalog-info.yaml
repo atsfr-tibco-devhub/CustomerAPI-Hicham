@@ -25,21 +25,6 @@ spec:
   owner: tibco-customers
 ---
 apiVersion: backstage.io/v1alpha1
-kind: System
-metadata:
-  name: CustomerAPI-Hicham-system
-  description: 'A system to manage customers'
-  annotations:
-    github.com/project-slug: atsfr-tibco-devhub/CustomerAPI-Hicham
-    backstage.io/techdocs-ref: dir:.
-  tags:
-    - customers
-    - platform
-spec:
-  owner: tibco-customers
-  domain: insurance
----
-apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: "CustomerAPI-Hicham"
@@ -67,9 +52,11 @@ metadata:
     backstage.io/techdocs-ref: dir:.
 spec:
   type: service
-  system: CustomerAPI-Hicham-system
+  system: customer-system
   lifecycle: development
   owner: tibco-customers
+  dependsOn:
+    - component:default/customer-backend
   providesApis: ['CustomerAPI-Hicham-api']
 ---
 apiVersion: backstage.io/v1alpha1
