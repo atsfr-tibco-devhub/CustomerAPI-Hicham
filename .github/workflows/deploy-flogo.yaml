@@ -30,7 +30,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Deploy FLogo app in TIBCO Platform
         env:
-          TOKEN=${{ secrets.TOKEN }}
+          TOKEN: ${{ secrets.TOKEN }}
         run: |          
           # BASE URL
           BASE_URL=https://flogo.dp1.atsfr-emea.azure.dataplanes.pro/tibco/flogo/cq35s2ijcp26pefl1dmg/
