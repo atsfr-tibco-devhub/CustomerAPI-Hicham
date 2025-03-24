@@ -33,7 +33,7 @@ jobs:
           # BASE URL
           BASE_URL=https://flogo.dp1.atsfr-emea.azure.dataplanes.pro/tibco/flogo/cq35s2ijcp26pefl1dmg/
           # Key:
-          TOKEN=CIC~deSitXbHS1eI19RvAOoUlM_u
+          TOKEN=${{ secrets.TOKEN }}
           # Flogo File to Deploy:
           FLOGO_FILE=src/customer-api.flogo
           APP_NAME=customer-api-hicham
