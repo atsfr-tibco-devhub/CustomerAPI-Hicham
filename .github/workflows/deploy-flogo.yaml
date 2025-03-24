@@ -45,6 +45,9 @@ jobs:
             -H 'accept: application/json' \
             -H "Authorization: Bearer $TOKEN" \
             -H "X-Atmosphere-Token: $TOKEN" 
+
+          if [ $? != 0 ]; then "Not able to connect to TIBCO Platform API !" && exit 1; fi
+          
           # do a post on /v1/dp/builds
           echo creating a build...
           # Get the build ID
