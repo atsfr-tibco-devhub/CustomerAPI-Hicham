@@ -29,7 +29,6 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Deploy FLogo app in TIBCO Platform
-      - shell: bash
         env:
           PLATFORM_TOKEN: ${{ secrets.TOKEN }}
         run: |          
