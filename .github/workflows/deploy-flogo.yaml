@@ -39,7 +39,7 @@ jobs:
           FLOGO_FILE=src/customer-api.flogo
           APP_NAME=customer-api-hicham
           # Testing the API
-          echo Testing Connection:
+          echo Testing Connection: $TOKEN $PLATFORM_TOKEN
           curl -X 'GET' \
             "$BASE_URL/public/v1/dp/flogoversions" \
             -H 'accept: application/json' \
