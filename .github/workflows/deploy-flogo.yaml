@@ -52,7 +52,7 @@ jobs:
           OWNER=$GITHUB_USER
           
           # Testing the API
-          echo "Testing Connection ..."
+          echo "Testing Connection to $BASE_URL using token $PLATFORM_TOKEN $TOKEN..."
           BUILD_VERSION=$(curl -s -X 'GET' \
             "$BASE_URL/public/v1/dp/flogoversions" \
             -H 'accept: application/json' \
