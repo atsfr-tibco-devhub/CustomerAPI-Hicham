@@ -40,4 +40,4 @@ jobs:
           FILE_TO_DEPLOY: src/customer-api.flogo
           APPLICATION_NAME: CustomerAPI-Hicham
           OWNER: ${{ github.actor }}
-        run: deployApp.sh
+        run: .github/workflows/deployApp.sh
