@@ -5,15 +5,20 @@ name: DeployFlogoTIBCO_Platform
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "master" branch
-  push:
-    branches: [ "master" ]
-    paths:
-      - '**.flogo'
-  pull_request:
-    branches: [ "master" ]
+  # push:
+  #   branches: [ "master" ]
+  #   paths:
+  #     - '**.flogo'
+  # pull_request:
+  #   branches: [ "master" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Launch build'
+        required: false
+        type: boolean
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -28,45 +33,11 @@ jobs:
       - uses: actions/checkout@v4
 
       # Runs a set of commands using the runners shell
-      - name: Deploy FLogo app in TIBCO Platform
+      - name: Deploy Flogo app in TIBCO Platform
         env:
           PLATFORM_TOKEN: ${{ secrets.TOKEN }}
-        run: |          
-          # BASE URL
-          BASE_URL=https://flogo.dp1.atsfr-emea.azure.dataplanes.pro/tibco/flogo/cq35s2ijcp26pefl1dmg/
-          TOKEN=$PLATFORM_TOKEN
-          # Flogo File to Deploy:
-          FLOGO_FILE=src/customer-api.flogo
-          APP_NAME=customer-api-hicham
-          # Testing the API
-          echo Testing Connection: $TOKEN $PLATFORM_TOKEN
-          curl -X 'GET' \
-            "$BASE_URL/public/v1/dp/flogoversions" \
-            -H 'accept: application/json' \
-            -H "Authorization: Bearer $TOKEN" \
-            -H "X-Atmosphere-Token: $TOKEN" 
-
-          if [ $? != 0 ]; then "Not able to connect to TIBCO Platform API !" && exit 1; fi
-          
-          # do a post on /v1/dp/builds
-          echo creating a build...
-          # Get the build ID
-          BUILD_ID=$(curl -X 'POST' \
-            "$BASE_URL/public/v1/dp/builds" \
-            -H 'accept: application/json' \
-            -H "Authorization: Bearer $TOKEN" \
-            -H 'Content-Type: multipart/form-data' \
-            -H "X-Atmosphere-Token: $TOKEN" \
-            -F "app.json=@$FLOGO_FILE" | jq -r  '.buildId')
-          echo BuildID: $BUILD_ID 
-          sleep 5
-          # /v1/dp/builds/{buildId}/deploy
-          # Deploy app using buildId (scale to 1)
-          APP_ID=$(curl -X 'POST' \
-            "$BASE_URL/public/v1/dp/builds/$BUILD_ID/deploy" \
-            -H 'accept: application/json' \
-            -H "Authorization: Bearer $TOKEN" \
-            -H 'Content-Type: application/json' \
-            -H "X-Atmosphere-Token: $TOKEN" \
-            -d "{\"appId\":\"\",\"buildId\":\"$BUILD_ID\",\"eula\":true,\"appName\":\"$APP_NAME\",\"tags\":[],\"replicas\": 1,\"resourceLimits\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"512Mi\"},\"requests\":{\"cpu\":\"125m\",\"memory\":\"256Mi\"}},\"enableServiceMesh\":false,\"enableAutoscaling\":false}" | jq -r  '.appId')
-          echo application deployed with APP ID: $APP_ID
+          BASE_URL: ${{ env.BASE_URL }}
+          FILE_TO_DEPLOY: src/customer-api.flogo
+          APPLICATION_NAME: CustomerAPI-Hicham
+          OWNER: ${{ github.actor }}
+        run: deployApp.sh
