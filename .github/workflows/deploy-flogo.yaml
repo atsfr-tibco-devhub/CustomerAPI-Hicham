@@ -36,13 +36,13 @@ jobs:
       - name: Deploy Flogo app in TIBCO Platform
         env:
           PLATFORM_TOKEN: ${{ secrets.TOKEN }}
-          BASE_URL: ${{ env.BASE_URL }}
+          BASE_URL: ${{ vars.BASE_URL }}
           FILE_TO_DEPLOY: src/customer-api.flogo
           APPLICATION_NAME: CustomerAPI-Hicham
           GITHUB_USER: ${{ github.actor }}
         run: |
           # BASE URL
-          BASE_URL=$BASE_URL
+          #BASE_URL=$BASE_URL
           # Key:
           TOKEN=$PLATFORM_TOKEN
           # Flogo File to Deploy
