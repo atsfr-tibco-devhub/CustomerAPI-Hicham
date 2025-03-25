@@ -75,6 +75,7 @@ jobs:
           sleep 5
           
           # Deploy app using buildId (scale to 1)
+          echo "Creating application with name $APP_NAME ..."
           output=$(curl -s -X 'POST' \
             "$BASE_URL/public/v1/dp/builds/$BUILD_ID/deploy" \
             -H 'accept: application/json' \
