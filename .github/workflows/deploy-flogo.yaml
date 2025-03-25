@@ -38,7 +38,7 @@ jobs:
           TOKEN: ${{ secrets.TOKEN }}
           BASE_URL: ${{ vars.BASE_URL }}
           FLOGO_FILE: src/customer-api.flogo
-          APP_NAME: customerAPI-Hicham
+          APPLICATION_NAME: ${{ github.event.repository.name }}
           OWNER: ${{ github.actor }}
         run: |
           # Deploy app to TIBCO Platform
@@ -47,7 +47,7 @@ jobs:
           #TOKEN=$PLATFORM_TOKEN
           # Flogo File to Deploy
           #FLOGO_FILE=$FILE_TO_DEPLOY
-          #APP_NAME=$APPLICATION_NAME
+          APP_NAME=echo "$APPLICATION_NAME" | tr '[:upper:]' '[:lower:]'
           #Owner to use in tags
           #OWNER=$GITHUB_USER
           
