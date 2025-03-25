@@ -47,7 +47,7 @@ jobs:
           #TOKEN=$PLATFORM_TOKEN
           # Flogo File to Deploy
           #FLOGO_FILE=$FILE_TO_DEPLOY
-          APP_NAME=echo "$APPLICATION_NAME" | tr '[:upper:]' '[:lower:]'
+          APP_NAME=${APPLICATION_NAME,,}
           #Owner to use in tags
           #OWNER=$GITHUB_USER
           
