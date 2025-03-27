@@ -85,15 +85,15 @@ jobs:
             -d "{\"appId\":\"\",\"buildId\":\"$BUILD_ID\",\"eula\":true,\"appName\":\"$APP_NAME\",\"tags\":[\"$OWNER\"],\"replicas\": 1,\"resourceLimits\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"512Mi\"},\"requests\":{\"cpu\":\"125m\",\"memory\":\"256Mi\"}},\"enableServiceMesh\":false,\"enableAutoscaling\":false}")
           echo $output
           APP_ID=$(echo $output | jq -r  '.appId')
-          if [[ -z "$APP_ID" ]]; then 
-            echo "Error deploying the application: \n$output" && exit 1; 
-          fi
+          if [[ -z "$APP_ID" ]]; then echo "Error deploying the application: \n $output" && exit 1; else echo $output; fi
           sleep 5 
           echo "Application deployed with APP ID: $APP_ID: \n$output"
 
           # Edit catalog-info.yaml with new appId
+          echo "Edit catalog-info.yaml with new appId $APP_ID ..."
           sed -i -e "s/AppID: \([a-z0-9]*\)/AppID: $APP_ID/g" catalog-info.yaml
-
+          echo $?
+          
           # Commit and Push Changes
           # configure user
           git config --global user.name "$OWNER"
