@@ -88,12 +88,39 @@ jobs:
           if [[ -z "$APP_ID" ]]; then echo "Error deploying the application: \n $output" && exit 1; else echo $output; fi
           sleep 5 
           echo "Application deployed with APP ID: $APP_ID: \n$output"
-
           # Edit catalog-info.yaml with new appId
           echo "Edit catalog-info.yaml with new appId $APP_ID ..."
           sed -i -e "s/AppID: \([a-z0-9]*\)/AppID: $APP_ID/g" catalog-info.yaml
           echo $?
           cat catalog-info.yaml | grep appId
+  # Add actions that modify files here
+      - name: Check for Changes
+        id: check_changes
+        run: |
+          if [[ -n "$(git diff --exit-code)" ]]; then
+            echo "Changes detected."
+            echo "::set-output name=has_changes::true"
+          else
+            echo "No changes detected."
+            echo "::set-output name=has_changes::false"
+          fi
+
+      - name: Commit and Push Changes
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          # configure user
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+          # stage any file changes to be committed
+          git add .
+
+          # make commit with staged changes
+          git commit -m 'files changed'
+
+          # push the commit back up to source GitHub repository
+          git push
+          
           # Commit and Push Changes
           echo "configure user"
           git config --global user.name "$OWNER"
