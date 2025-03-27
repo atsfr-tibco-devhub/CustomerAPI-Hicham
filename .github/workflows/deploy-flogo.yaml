@@ -31,16 +31,16 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+
+
+      # Runs a set of commands using the runners shell
+      - name: Deploy Flogo app in TIBCO Platform
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TOKEN: ${{ secrets.TOKEN }}
           BASE_URL: ${{ secrets.BASE_URL }}
           FLOGO_FILE: src/customer-api.flogo
           APPLICATION_NAME: ${{ github.event.repository.name }}
           OWNER: ${{ github.actor }}
-
-      # Runs a set of commands using the runners shell
-      - name: Deploy Flogo app in TIBCO Platform
         run: |
           # Deploy app to TIBCO Platform
 
@@ -104,8 +104,8 @@ jobs:
         if: steps.check_changes.outputs.has_changes == 'true'
         run: |
           # configure user
-          git config --global user.name "$OWNER"
-          git config --global user.email "$OWNER@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
           # stage any file changes to be committed
           git add .
