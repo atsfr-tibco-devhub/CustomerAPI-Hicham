@@ -30,7 +30,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v4
 
       # Runs a set of commands using the runners shell
       - name: Deploy Flogo app in TIBCO Platform
@@ -90,7 +90,7 @@ jobs:
           echo "Application deployed with APP ID: $APP_ID: \n$output"
           # Edit catalog-info.yaml with new appId
           echo "Edit catalog-info.yaml with new appId $APP_ID ..."
-          sed -i -e "s/AppID: \([a-z0-9]*\)/AppID: $APP_ID/g" catalog-info.yaml
+          sed -i -e "s/appId: \([a-z0-9]*\)/appId: $APP_ID/g" catalog-info.yaml
           echo $?
           cat catalog-info.yaml | grep appId
   # Add actions that modify files here
