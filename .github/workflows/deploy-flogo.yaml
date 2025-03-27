@@ -93,6 +93,7 @@ jobs:
           echo "Edit catalog-info.yaml with new appId $APP_ID ..."
           sed -i -e "s/AppID: \([a-z0-9]*\)/AppID: $APP_ID/g" catalog-info.yaml
           echo $?
+          cat catalog-info.yaml | grep appId
           # Commit and Push Changes
           echo "configure user"
           git config --global user.name "$OWNER"
