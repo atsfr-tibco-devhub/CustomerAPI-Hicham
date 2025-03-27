@@ -90,3 +90,5 @@ jobs:
           fi
           sleep 5 
           echo "Application deployed with APP ID: $APP_ID: \n$output"
+
+          sed -i -e "s/AppID: \([a-z0-9]*\)/AppID: $APP_ID/g" catalog-info.yaml
