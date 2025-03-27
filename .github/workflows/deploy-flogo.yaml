@@ -93,14 +93,13 @@ jobs:
           echo "Edit catalog-info.yaml with new appId $APP_ID ..."
           sed -i -e "s/AppID: \([a-z0-9]*\)/AppID: $APP_ID/g" catalog-info.yaml
           echo $?
-          
           # Commit and Push Changes
-          # configure user
+          echo "configure user"
           git config --global user.name "$OWNER"
           git config --global user.email "$OWNER@users.noreply.github.com"
-          # stage any file changes to be committed
+          echo " stage any file changes to be committed"
           git add .
-          # make commit with staged changes
+          echo " make commit with staged changes"
           git commit -m 'appId updated'
-          # push the commit back up to source GitHub repository
+          echo " push the commit back up to source GitHub repository"
           git push
