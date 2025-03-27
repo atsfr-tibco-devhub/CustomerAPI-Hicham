@@ -99,7 +99,7 @@ jobs:
           git config --global user.name "$OWNER"
           git config --global user.email "$OWNER@users.noreply.github.com"
           echo " stage any file changes to be committed"
-          git add .
+          git add catalog-info.yaml
           echo " make commit with staged changes"
           git commit -m 'appId updated'
           echo " push the commit back up to source GitHub repository"
