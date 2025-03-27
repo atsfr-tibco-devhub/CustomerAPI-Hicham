@@ -57,7 +57,7 @@ metadata:
       dataPlaneName: dp-aks
       dpId: cq35s2ijcp26pefl1dmg
       capabilityInstanceId: cqgcsnijcp26pefl1g20
-      appId: cuvjtna7s00mf6nsijvg
+      appId: cvimin5ik1160p8mjtd0
   annotations:
     jenkins.io/job-full-name: CustomerAPI-HichamJob
     github.com/project-slug: atsfr-tibco-devhub/CustomerAPI-Hicham
