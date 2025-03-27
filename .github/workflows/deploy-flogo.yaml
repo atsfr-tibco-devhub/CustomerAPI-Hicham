@@ -37,7 +37,7 @@ jobs:
       - name: Deploy Flogo app in TIBCO Platform
         env:
           TOKEN: ${{ secrets.TOKEN }}
-          BASE_URL: ${{ secrets.BASE_URL }}
+          BASE_URL: ${{ env.BASE_URL }}
           FLOGO_FILE: src/customer-api.flogo
           APPLICATION_NAME: ${{ github.event.repository.name }}
           OWNER: ${{ github.actor }}
